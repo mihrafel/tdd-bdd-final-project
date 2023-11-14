@@ -5,12 +5,11 @@ Feature: The product store service back-end
 
 Background:
     Given the following products
-    
-       |id  | name       | description     | price   | available | category   |
-       | 1  | Hat        | A red fedora    | 59.95   | True      | CLOTHS     |
-       | 2  | Shoes      | Blue shoes      | 120.50  | False     | CLOTHS     |
-       | 3  | Big Mac    | 1/4 lb burger   | 5.99    | True      | FOOD       |
-       | 4  | Sheets     | Full bed sheets | 87.00   | True      | HOUSEWARES |
+        | name       | description     | price   | available | category   |
+        | Hat        | A red fedora    | 59.95   | True      | CLOTHS     |
+        | Shoes      | Blue shoes      | 120.50  | False     | CLOTHS     |
+        | Big Mac    | 1/4 lb burger   | 5.99    | True      | FOOD       |
+        | Sheets     | Full bed sheets | 87.00   | True      | HOUSEWARES |
 
 Scenario: The server is running
     When I visit the "Home Page"
@@ -39,6 +38,7 @@ Scenario: Create a Product
     And I should see "True" in the "Available" dropdown
     And I should see "Tools" in the "Category" dropdown
     And I should see "34.95" in the "Price" field
+
 
 Scenario: Read a Product
     When I visit the "Home Page"
@@ -132,5 +132,3 @@ Scenario: Search by name
     Then I should see the message "Success"
     And I should see "Hat" in the "Name" field
     And I should see "A red fedora" in the "Description" field
-
-
