@@ -61,4 +61,3 @@ class ProductFactory(factory.Factory):
         ]
     )
 
-   ## Add code to create Fake Products 
