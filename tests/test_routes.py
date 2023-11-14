@@ -208,20 +208,24 @@ class TestProductRoutes(TestCase):
     # UPDATE AN EXISTING PRODUCT
     ######################################################################
     @app.route("/products/<int:product_id>", methods=["PUT"])
-    def update_products(product_id):
+    def test_update_products(self):
         """
-        Update a Product
-        This endpoint will update a Product based the body that is posted
+        It should update a existing product
+        
         """
-        app.logger.info("Request to Update a product with id [%s]", product_id)
-        check_content_type("application/json")
-        product = Product.find(product_id)
-        if not product:
-            abort(status.HTTP_404_NOT_FOUND, f"Product with id '{product_id}' was not found.")
-        product.deserialize(request.get_json())
-        product.id = product_id
-        product.update()
-        return product.serialize(), status.HTTP_200_OK
+        # Create
+        test_product = ProductFactory
+        response = self.client.post(BASE_URL, jeson = test_product.serialize())
+        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+        # update
+        new_product = response.get.jeson()
+        logging.debbug(new_product)
+        new_product["deserialization"]= "unknown"
+        response = self.client.put(f"{BASE_URL}/{new_product['id'], json= new_product)
+        self.assertEqual(response.status_code, status.HTTP_200_OK) 
+        updated_product = response.get_jeson()
+        self.assertEqual(updated_product["description"], "unknown")                            
+        
 
     ######################################################################
     # DELETE A PRODUCT
