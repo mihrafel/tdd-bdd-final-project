@@ -39,8 +39,7 @@ DATABASE_URI = os.getenv(
 ######################################################################
 #  P R O D U C T   M O D E L   T E S T   C A S E S
 ######################################################################
-##pylint: disable=too-many-public-methods
-
+# pylint: disable=too-many-public-methods
 class TestProductModel(unittest.TestCase):
     """Test Cases for Product Model"""
 
@@ -58,13 +57,11 @@ class TestProductModel(unittest.TestCase):
         """This runs once after the entire test suite"""
         db.session.close()
 
-    @classmethod
     def setUp(self):
         """This runs before each test"""
         db.session.query(Product).delete()  # clean up the last tests
         db.session.commit()
 
-    @classmethod
     def tearDown(self):
         """This runs after each test"""
         db.session.remove()
@@ -72,7 +69,7 @@ class TestProductModel(unittest.TestCase):
     ######################################################################
     #  T E S T   C A S E S
     ######################################################################
-    @classmethod
+
     def test_create_a_product(self):
         """It should Create a product and assert that it exists"""
         product = Product(name="Fedora", description="A red hat", price=12.50, available=True, category=Category.CLOTHS)
@@ -85,7 +82,6 @@ class TestProductModel(unittest.TestCase):
         self.assertEqual(product.price, 12.50)
         self.assertEqual(product.category, Category.CLOTHS)
 
-    @classmethod
     def test_add_a_product(self):
         """It should Create a product and add it to the database"""
         products = Product.all()
@@ -108,8 +104,6 @@ class TestProductModel(unittest.TestCase):
     #
     # ADD YOUR TEST CASES HERE
     #
-
-    @classmethod
     def test_read_a_product(self):
         """It should Read a Product"""
         product = ProductFactory()
@@ -122,9 +116,8 @@ class TestProductModel(unittest.TestCase):
         self.assertEqual(found_product.name, product.name)
         self.assertEqual(found_product.description, product.description)
         self.assertEqual(found_product.price, product.price)
-
-    @classmethod
-    def test_update_a_product(self):
+    
+   def test_update_a_product(self):
         """It should Update a Product"""
         product = ProductFactory()
         product.id = None
@@ -143,7 +136,6 @@ class TestProductModel(unittest.TestCase):
         self.assertEqual(products[0].id, original_id)
         self.assertEqual(products[0].description, "testing")
 
-    @classmethod
     def test_delete_a_product(self):
         """It should Delete a Product"""
         product = ProductFactory()
@@ -153,7 +145,6 @@ class TestProductModel(unittest.TestCase):
         product.delete()
         self.assertEqual(len(Product.all()), 0)
 
-    @classmethod
     def test_list_all_products(self):
         """It should List all Products in the database"""
         products = Product.all()
@@ -166,8 +157,7 @@ class TestProductModel(unittest.TestCase):
         products = Product.all()
         self.assertEqual(len(products), 5)
 
-    @classmethod
-    def test_find_by_name(self):
+     def test_find_by_name(self):
         """It should Find a Product by Name"""
         products = ProductFactory.create_batch(5)
         for product in products:
@@ -178,9 +168,8 @@ class TestProductModel(unittest.TestCase):
         self.assertEqual(found.count(), count)
         for product in found:
             self.assertEqual(product.name, name)
-
-    @classmethod
-    def test_find_by_availability(self):
+        
+      def test_find_by_availability(self):
         """It should Find Products by Availability"""
         products = ProductFactory.create_batch(10)
         for product in products:
@@ -192,8 +181,7 @@ class TestProductModel(unittest.TestCase):
         for product in found:
             self.assertEqual(product.available, available)
 
-    @classmethod
-    def test_find_by_category(self):
+      def test_find_by_category(self):
         """It should Find Products by Category"""
         products = ProductFactory.create_batch(10)
         for product in products:
@@ -204,13 +192,3 @@ class TestProductModel(unittest.TestCase):
         self.assertEqual(found.count(), count)
         for product in found:
             self.assertEqual(product.category, category)
-
-    @classmethod
-    def test_get_product_not_found(self):
-        """It should not Get a Product thats not found"""
-        response = self.client.get(f"{BASE_URL}/0")
-        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
-        data = response.get_json()
-        self.assertIn("was not found", data["message"])
-
-    
