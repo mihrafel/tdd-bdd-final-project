@@ -80,7 +80,7 @@ class TestProductRoutes(TestCase):
     ############################################################
     # Utility function to bulk create products
     ############################################################
-    def _create_products(self, count: int = 1) -> list:
+    def test_create_products(self, count: int = 1) -> list:
         """Factory method to create products in bulk"""
         products = []
         for _ in range(count):
@@ -182,7 +182,7 @@ class TestProductRoutes(TestCase):
     # READ A PRODUCT
     ######################################################################
     @app.route("/products/<int:product_id>", methods=["GET"])
-    def get_products(product_id):
+    def test_get_products(product_id):
         """
         Retrieve a single Product
 
@@ -230,8 +230,9 @@ class TestProductRoutes(TestCase):
     ######################################################################
     # DELETE A PRODUCT
     ######################################################################
+    
     @app.route("/products/<int:product_id>", methods=["DELETE"])
-    def delete_products(product_id):
+    def test_delete_products(product_id):
         """
         Delete a Product
 
@@ -249,7 +250,7 @@ class TestProductRoutes(TestCase):
     # LIST PRODUCTS
     ######################################################################
     @app.route("/products", methods=["GET"])
-    def list_products():
+    def test_list_products():
         """Returns a list of Products"""
         app.logger.info("Request to list Products...")
 
@@ -278,7 +279,7 @@ class TestProductRoutes(TestCase):
     # LIST PRODUCTS BY NAME
     ######################################################################
     @app.route("/products", methods=["GET"])
-    def list_products():
+    def tset_list_products():
         """Returns a list of Products"""
         app.logger.info("Request to list Products...")
 
@@ -300,7 +301,7 @@ class TestProductRoutes(TestCase):
     # LIST PRODUCTS BY CATEGORY
     ######################################################################
     @app.route("/products", methods=["GET"])
-    def list_products():
+    def test_list_products():
         """Returns a list of Products"""
         app.logger.info("Request to list Products...")
 
@@ -328,7 +329,7 @@ class TestProductRoutes(TestCase):
     # LIST PRODUCTS
     ######################################################################
     @app.route("/products", methods=["GET"])
-    def list_products():
+    def tset_list_products():
         """Returns a list of Products"""
         app.logger.info("Request to list Products...")
 
@@ -362,7 +363,7 @@ class TestProductRoutes(TestCase):
     # Utility functions
     ######################################################################
 
-    def get_product_count(self):
+    def test_get_product_count(self):
         """save the current number of products"""
         response = self.client.get(BASE_URL)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
