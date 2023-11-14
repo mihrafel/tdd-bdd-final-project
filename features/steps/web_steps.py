@@ -25,7 +25,7 @@ For information on Waiting until elements are present in the HTML see:
     https://selenium-python.readthedocs.io/waits.html
 """
 import logging
-from behave import when, then
+from behave import when, then, given
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import Select, WebDriverWait
 from selenium.webdriver.support import expected_conditions
@@ -103,8 +103,88 @@ def step_impl(context, element_name):
 # id='clear-btn'. That allows us to lowercase the name and add '-btn'
 # to get the element id of any button
 ##################################################################
+@given(u'the following products')
+def step_impl(context):
+    raise NotImplementedError(u'STEP: Given the following')
 
-## UPDATE CODE HERE ##
+@when(u'I press the "Create" button')
+def step_impl(context):
+    raise NotImplementedError(u'STEP: When I press the "Create" button')
+
+
+@then(u'I should see the message "Success"')
+def step_impl(context):
+    raise NotImplementedError(u'STEP: Then I should see the message "Success"')
+
+
+@when(u'I press the "Clear" button')
+def step_impl(context):
+    raise NotImplementedError(u'STEP: When I press the "Clear" button')
+
+
+@when(u'I press the "Retrieve" button')
+def step_impl(context):
+    raise NotImplementedError(u'STEP: When I press the "Retrieve" button')
+
+
+@when(u'I press the "Search" button')
+def step_impl(context):
+    raise NotImplementedError(u'STEP: When I press the "Search" button')
+
+
+@when(u'I press the "Update" button')
+def step_impl(context):
+    raise NotImplementedError(u'STEP: When I press the "Update" button')
+
+
+@then(u'I should see "Fedora" in the results')
+def step_impl(context):
+    raise NotImplementedError(u'STEP: Then I should see "Fedora" in the results')
+
+
+@then(u'I should not see "Hat" in the results')
+def step_impl(context):
+    raise NotImplementedError(u'STEP: Then I should not see "Hat" in the results')
+
+
+@when(u'I press the "Delete" button')
+def step_impl(context):
+    raise NotImplementedError(u'STEP: When I press the "Delete" button')
+
+
+@then(u'I should see the message "Product has been Deleted!"')
+def step_impl(context):
+    raise NotImplementedError(u'STEP: Then I should see the message "Product has been Deleted!"')
+
+
+@then(u'I should see "Hat" in the results')
+def step_impl(context):
+    raise NotImplementedError(u'STEP: Then I should see "Hat" in the results')
+
+
+@then(u'I should see "Shoes" in the results')
+def step_impl(context):
+    raise NotImplementedError(u'STEP: Then I should see "Shoes" in the results')
+
+
+@then(u'I should see "Big Mac" in the results')
+def step_impl(context):
+    raise NotImplementedError(u'STEP: Then I should see "Big Mac" in the results')
+
+
+@then(u'I should see "Sheets" in the results')
+def step_impl(context):
+    raise NotImplementedError(u'STEP: Then I should see "Sheets" in the results')
+
+
+@then(u'I should not see "Shoes" in the results')
+def step_impl(context):
+    raise NotImplementedError(u'STEP: Then I should not see "Shoes" in the results')
+
+
+@then(u'I should not see "Sheets" in the results')
+def step_impl(context):
+    raise NotImplementedError(u'STEP: Then I should not see "Sheets" in the results')
 
 ##################################################################
 # This code works because of the following naming convention:
