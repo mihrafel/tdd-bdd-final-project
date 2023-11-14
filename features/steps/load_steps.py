@@ -30,7 +30,7 @@ HTTP_200_OK = 200
 HTTP_201_CREATED = 201
 HTTP_204_NO_CONTENT = 204
 
-@given('the following')
+@given('the following products')
 def step_impl(context):
     """ Delete all Products and load new ones """
     #
